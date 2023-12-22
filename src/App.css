@@ -13,10 +13,18 @@
 
 .calculadora{
   border-radius: 5px;
-  padding: 60px 30px 30px 30px;
+  padding: 0px 30px 30px 30px;
   border: 2px solid lightblue;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  background-color: rgb(13, 58, 92, .2);
+}
+
+.calculadora h1{
+  color: white;
+  font: 500 2em arial, sans-serif;
+  margin: 20px 0px;
 }
 
 .container{
@@ -73,7 +81,7 @@ button{
   justify-content: center;
   align-items: center;
   height: 45px;
-  font: 400 1.2em arial, sans-serif;
+  font: 400 1.5em arial, sans-serif;
   transition: transform .2s ease-in-out;
 }
 

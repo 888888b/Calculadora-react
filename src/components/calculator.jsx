@@ -17,7 +17,7 @@ function Calculadora() {
     setReset("");
   }
 
-  function somar(){
+  function Somar(){
     if (num > 0) {
       setOld(num);
       setOpr("+");
@@ -26,7 +26,7 @@ function Calculadora() {
     }
   }
 
-  function subtrair(){
+  function Subtrair(){
     if (num > 0) {
       setOld(num);
       setOpr("-");
@@ -35,7 +35,7 @@ function Calculadora() {
     }
   }
 
-  function porcentagem(){
+  function Porcentagem(){
     if (num > 0) {
       setOld(num);
       setOpr("%");
@@ -44,7 +44,7 @@ function Calculadora() {
     }
   }
 
-  function multiplicar(){
+  function Multiplicar(){
     if (num > 0) {
       setOld(num);
       setOpr("x");
@@ -53,18 +53,27 @@ function Calculadora() {
     }
   }
 
-  function clear(){
+  function Clear(){
     setNum(0);
     setOld(0);
     setReset("");
   }
 
-  function divisao(){
+  function Divisao(){
     if (num > 0) {
       setOld(num);
       setOpr("/");
-      setNum("/");
+      setNum("÷");
       setReset("/");
+    }
+  }
+
+  function Elevado(){
+    if (num > 0) {
+      setOld(num);
+      setOpr("x²");
+      setNum("x²");
+      setReset("x²");
     }
   }
 
@@ -86,33 +95,37 @@ function Calculadora() {
     if (opr === "%") {
       setNum(old / 100);
     }
+    if (opr === "x²"){
+      setNum(old ** 2);
+    }
   }
 
   return (
     <main className='app'>
       <div className='calculadora'>
+        <h1>React Calculator</h1>
         <div className='container'>
           <div className='tela'><h1>{num}</h1></div>
           <div className='buttons'>
 
             <div className='div-buttons' id="btn1">
-              <button id="btn-c" onClick={clear}>C</button>
-              <button onClick={porcentagem}>%</button>
-              <button onClick={multiplicar}>x</button>
+              <button id="btn-c" onClick={Clear}>C</button>
+              <button onClick={Porcentagem}>%</button>
+              <button onClick={Multiplicar}>x</button>
             </div>
 
             <div className="div-buttons" id="btn2">
               <button onClick={clickButton} value={7}>7</button>
               <button onClick={clickButton} value={8}>8</button>
               <button onClick={clickButton} value={9}>9</button>
-              <button onClick={somar} >+</button>
+              <button onClick={Somar} >+</button>
             </div>
 
             <div className='div-buttons' id="btn3">
               <button onClick={clickButton} value={4}>4</button>
               <button onClick={clickButton} value={5}>5</button>
               <button onClick={clickButton} value={6}>6</button>
-              <button onClick={subtrair}>-</button>
+              <button onClick={Subtrair}>-</button>
             </div>
 
             <div className='div-buttons' id="btn4">
@@ -126,8 +139,8 @@ function Calculadora() {
 
                 <div className='divs-especiais'>
                   <button onClick={clickButton} value={0}>0</button>
-                  <button onClick={clickButton}>.</button>
-                  <button onClick={divisao}>/</button>
+                  <button onClick={Elevado}>x²</button>
+                  <button onClick={Divisao}>÷</button>
                 </div>
               </div>
               <div id="btn4-div2">
