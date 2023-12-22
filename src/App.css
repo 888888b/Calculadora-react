@@ -1,0 +1,110 @@
+*{
+  margin: 0;
+}
+
+.app{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(135deg, black, #080826, #0c0c50);
+}
+
+.calculadora{
+  border-radius: 5px;
+  padding: 60px 30px 30px 30px;
+  border: 2px solid lightblue;
+  display: flex;
+  justify-content: center;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  }
+
+.tela{
+  width: 100%;
+  height: 100px;
+  border: 3px solid lightblue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0px 15px 5px 0px;
+  box-sizing: border-box;
+}
+
+.tela h1{
+  color: white;
+  max-width: 250px;
+  overflow: hidden;
+  padding: 0px 5px 0px 0px;
+  font: 500 2em arial, sans-serif;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  row-gap: .5rem;
+}
+
+.div-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+button{
+  background-color: transparent;
+  color: white;
+  border: 1pt solid lightblue;
+  border-radius: 5px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  font: 400 1.2em arial, sans-serif;
+  transition: transform .2s ease-in-out;
+}
+
+button:hover{
+  border: 1pt solid white;
+  background-color: #15616D;
+  transform: scale(1.05);
+}
+
+#btn-c{
+  width: calc(140px + .5rem);
+}
+
+#btn-extra{
+  height: 100%;
+}
+
+#btn4-div1{
+  display: flex;
+  row-gap: .5rem;
+  flex-direction: column;
+}
+
+.divs-especiais{
+  display: flex;
+  gap: .5rem;
+}
+
+
+
+
+
+
+
