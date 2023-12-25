@@ -1,5 +1,7 @@
 import { useState, useEffect} from "react";
 import React from "react";
+import AOS from "aos";
+import 'aos/dist/aos.css';
 
 function Calculadora() {
   const [num, setNum] = useState(0);
@@ -100,9 +102,10 @@ function Calculadora() {
     }
   }
 
+  AOS.init();
   return (
     <main className='app'>
-      <div className='calculadora'>
+      <div className='calculadora' data-aos="fade-up" data-aos-delay="400">
         <h1>React Calculator</h1>
         <div className='container'>
           <div className='tela'><h1>{num}</h1></div>
