@@ -5,26 +5,36 @@ import 'aos/dist/aos.css';
 
 function Calculadora() {
   const [num, setNum] = useState(0);
-  const [old, setOld] = useState(0);
+  const [old, setOld] = useState("");
   const [opr, setOpr] = useState("");
   const [reset, setReset] = useState();
+  const [oldre, setOldre] = useState("");
+  const [resultado, setResultado] = useState("");
+   
   
   function clickButton(e){
     var evento = e.target.value;
-    if (num.length > 0 && reset === "") {
+    if (num.length > 0 && reset === "" && num != 0) {
       setNum(num + evento);
     } else{
       setNum(evento);
     }
     setReset("");
+    setOldre(1);
+    setResultado("");
   }
 
   function Somar(){
     if (num > 0) {
       setOld(num);
       setOpr("+");
-      setNum("+");
       setReset("+");
+      setNum("");
+    };
+    if (oldre.length === 0){
+      setOld(0);
+      setOpr("+");
+      setNum("");
     }
   }
 
@@ -32,8 +42,13 @@ function Calculadora() {
     if (num > 0) {
       setOld(num);
       setOpr("-");
-      setNum("-");
+      setNum("");
       setReset("-");
+    }
+    if (oldre.length === 0){
+      setOld(0);
+      setOpr("-");
+      setNum("");
     }
   }
 
@@ -41,7 +56,7 @@ function Calculadora() {
     if (num > 0) {
       setOld(num);
       setOpr("%");
-      setNum("%");
+      setNum("");
       setReset("%");
     }
   }
@@ -50,23 +65,36 @@ function Calculadora() {
     if (num > 0) {
       setOld(num);
       setOpr("x");
-      setNum("x");
+      setNum("");
       setReset("x");
+    }
+    if (oldre.length === 0){
+      setOld(0);
+      setOpr("x");
+      setNum("");
     }
   }
 
   function Clear(){
     setNum(0);
-    setOld(0);
+    setOld("");
     setReset("");
+    setOpr("");
+    setOldre("");
+    setResultado("");
   }
 
   function Divisao(){
     if (num > 0) {
       setOld(num);
-      setOpr("/");
-      setNum("÷");
-      setReset("/");
+      setOpr("÷");
+      setNum("");
+      setReset("÷");
+    }
+    if (oldre.length === 0){
+      setOld(0);
+      setOpr("÷");
+      setNum("");
     }
   }
 
@@ -74,30 +102,67 @@ function Calculadora() {
     if (num > 0) {
       setOld(num);
       setOpr("x²");
-      setNum("x²");
+      setNum("");
       setReset("x²");
+    }
+    if (oldre.length === 0){
+      setOld(0);
+      setOpr("x²");
+      setNum("");
     }
   }
 
   function result(){
-    if (old > 0 && num > 0 && opr.length > 0){
+    if (old >= 0 && num >= 0 && opr.length > 0){
       if (opr === "+") {
+        setOpr("");
+        setOld("");
         setNum(parseInt(old) + parseInt(num));
       }
       if (opr === "-") {
-        setNum(old - num);
+        setOpr("");
+        setOld("");
+        setNum(parseInt(old) - parseInt(num));
+        if (old - num === 0) {
+          setOldre("");
+        }
       }
-      if (opr === "/") {
-        setNum(old / num);
+      if (opr === "÷") {
+        setOpr("");
+        setOld("");
+        setNum(parseInt(old) / parseInt(num));
+        if (old / num === 0) {
+          setOldre("");
+        }
       }
       if (opr === "x") {
-        setNum(old * num);
+        setOpr("");
+        setOld("");
+        setNum(parseInt(old) * parseInt(num));
+        if (old * num === 0) {
+          setOldre("");
+        }
       }
-    }  
+      setResultado([old," ", opr," ", num, " ="]);
+    };
+
+    if (num >= 0 && opr.length === 0 && old === ""){
+      setResultado([num, " ="]);
+    };
+    
+    if (num >= 0 && opr.length > 0 && num === ""){
+      setResultado([old," ", opr, " ="]);
+    };
+    
     if (opr === "%") {
+      setOpr("");
+      setOld("");
       setNum(old / 100);
-    }
+    };
+    
     if (opr === "x²"){
+      setOpr("");
+      setOld("");
       setNum(old ** 2);
     }
   }
@@ -108,7 +173,12 @@ function Calculadora() {
       <div className='calculadora' data-aos="fade-up" data-aos-delay="400">
         <h1>React Calculator</h1>
         <div className='container'>
-          <div className='tela'><h1>{num}</h1></div>
+          <div className='tela'>
+            <h1 id="conta">{resultado}</h1>
+            <h1>{old}</h1>
+            <h1 id="operaçao">{opr}</h1>
+            <h1>{num}</h1>
+          </div>
           <div className='buttons'>
 
             <div className='div-buttons' id="btn1">
